@@ -1,4 +1,4 @@
-package com.humana.humana_backend.user_management.model;
+package com.humana.humana_backend.modules.user_management.model;
 
 import jakarta.persistence.*;
 import lombok.Getter;

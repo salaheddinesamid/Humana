@@ -1,4 +1,4 @@
-package com.humana.humana_backend.user_management.model;
+package com.humana.humana_backend.modules.user_management.model;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -7,7 +7,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-
+@Table(name = "roles")
 public class Role {
 
     @Id
@@ -16,5 +16,5 @@ public class Role {
 
     @Column(name = "role_name")
     @Enumerated(EnumType.STRING)
-    private String roleName;
+    private RoleName roleName;
 }
