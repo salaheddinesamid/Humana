@@ -1,7 +1,7 @@
-package com.humana.humana_backend.auth.service;
+package com.humana.humana_backend.modules.auth.service;
 
-import com.humana.humana_backend.auth.dto.LoginDto;
-import com.humana.humana_backend.auth.dto.LoginResponse;
+import com.humana.humana_backend.modules.auth.dto.LoginDto;
+import com.humana.humana_backend.modules.auth.dto.LoginResponse;
 
 public interface AuthenticationService {
 

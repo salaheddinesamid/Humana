@@ -1,6 +1,6 @@
-package com.humana.humana_backend.auth.dto;
+package com.humana.humana_backend.modules.auth.dto;
 
-import com.humana.humana_backend.user_management.model.User;
+import com.humana.humana_backend.modules.user_management.model.User;
 import lombok.Data;
 
 @Data
