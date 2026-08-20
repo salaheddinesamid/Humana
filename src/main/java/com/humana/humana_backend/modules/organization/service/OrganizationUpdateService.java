@@ -1,2 +1,4 @@
-package com.humana.humana_backend.modules.organization.service;public interface OrganizationUpdateService {
+package com.humana.humana_backend.modules.organization.service;
+
+public interface OrganizationUpdateService {
 }
