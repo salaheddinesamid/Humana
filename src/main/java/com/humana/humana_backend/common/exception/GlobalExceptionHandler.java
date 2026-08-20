@@ -27,4 +27,23 @@ public class GlobalExceptionHandler {
                 HttpStatus.UNAUTHORIZED
         ).body(response);
     }
+
+    @ExceptionHandler(OrganizationAlreadyExistsException.class)
+    public ResponseEntity<ErrorResponse> handleOrganizationAlreadyExists(
+            OrganizationAlreadyExistsException ex,
+            HttpServletRequest request
+    ){
+        ErrorResponse response = new ErrorResponse(
+                LocalDateTime.now(),
+                HttpStatus.BAD_REQUEST.value(),
+                "BAD REQUEST",
+                ex.getMessage(),
+                request.getRequestURI()
+        );
+
+        return ResponseEntity
+                .status(
+                        HttpStatus.BAD_REQUEST
+                ).body(response);
+    }
 }
