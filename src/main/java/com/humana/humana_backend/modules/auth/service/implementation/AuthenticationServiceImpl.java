@@ -1,19 +1,48 @@
-package com.humana.humana_backend.auth.service.implementation;
+package com.humana.humana_backend.modules.auth.service.implementation;
 
-import com.humana.humana_backend.auth.dto.LoginDto;
-import com.humana.humana_backend.auth.dto.LoginResponse;
-import com.humana.humana_backend.auth.service.AuthenticationService;
+import com.humana.humana_backend.common.exception.UserNotFoundException;
+import com.humana.humana_backend.modules.auth.dto.LoginDto;
+import com.humana.humana_backend.modules.auth.dto.LoginResponse;
+import com.humana.humana_backend.modules.auth.service.AuthenticationService;
+import com.humana.humana_backend.modules.user_management.model.Role;
+import com.humana.humana_backend.modules.user_management.model.User;
+import com.humana.humana_backend.modules.user_management.repository.UserRepository;
+import com.humana.humana_backend.security.jwt.JwtUtils;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 @Slf4j
 public class AuthenticationServiceImpl implements AuthenticationService {
 
+    private final UserRepository userRepository;
+    private final JwtUtils jwtUtils;
+
+    @Autowired
+    public AuthenticationServiceImpl(UserRepository userRepository, JwtUtils jwtUtils) {
+        this.userRepository = userRepository;
+        this.jwtUtils = jwtUtils;
+    }
 
     @Override
     public LoginResponse login(LoginDto loginDto) {
-        return null;
+        User user = userRepository
+                .findByUsername(loginDto.getUsername()).orElseThrow(()-> new UserNotFoundException(String.format("User with username: %s is not found", loginDto.getUsername())));
+
+        List<String> roles = user.getRoles().stream().map(role -> role.getRoleName().toString())
+                .toList();
+        String accessToken = jwtUtils.generateToken(user.getUsername(), roles);
+        String refreshToken = jwtUtils.generateRefreshToken(user.getUsername(), roles);
+
+        return new LoginResponse(
+                accessToken,
+                refreshToken,
+                user
+        );
+
     }
 
     @Override
