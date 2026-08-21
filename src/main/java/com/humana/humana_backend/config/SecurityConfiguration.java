@@ -20,7 +20,7 @@ public class SecurityConfiguration {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(authorizationManagerRequestMatcherRegistry ->
                         authorizationManagerRequestMatcherRegistry.requestMatchers("/api/v1/auth/**").permitAll()
-                                .requestMatchers("/api/v1/organization/new").hasAuthority("SUPER_ADMIN")
+                                .requestMatchers("/api/v1/organization/**").permitAll()
                 )
                 .build();
     }

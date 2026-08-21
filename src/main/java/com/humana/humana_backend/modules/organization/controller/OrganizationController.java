@@ -6,7 +6,6 @@ import com.humana.humana_backend.modules.organization.service.implementation.Org
 import com.humana.humana_backend.modules.organization.service.implementation.OrganizationQueryServiceImpl;
 import com.humana.humana_backend.modules.organization.service.implementation.OrganizationUpdateServiceImpl;
 import jakarta.validation.Valid;
-import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
