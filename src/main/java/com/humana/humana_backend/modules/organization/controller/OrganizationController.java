@@ -54,6 +54,13 @@ public class OrganizationController {
                 .body(organizationQueryService.getOrganization(id));
     }
 
+    @GetMapping("get_all")
+    public ResponseEntity<?> getAllOrganizations(){
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(organizationQueryService.getAll());
+    }
+
     /**
      * Updates an existing organization.
      *
