@@ -29,6 +29,10 @@ public class User implements UserDetails {
     @OneToMany
     private List<Role> roles;
 
+    public UUID getId(){
+        return this.id;
+    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of();
