@@ -1,2 +1,4 @@
-package com.humana.humana_backend.common.exception;public class UnmatchedPasswordsException {
+package com.humana.humana_backend.common.exception;
+
+public class UnmatchedPasswordsException extends RuntimeException{
 }

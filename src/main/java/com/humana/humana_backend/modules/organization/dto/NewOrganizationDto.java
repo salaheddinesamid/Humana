@@ -23,4 +23,7 @@ public class NewOrganizationDto {
 
     private Integer numberOfEmployees;
 
+    @NotBlank(message = "Organization's admin email is required")
+    private String adminEmail;
+
 }

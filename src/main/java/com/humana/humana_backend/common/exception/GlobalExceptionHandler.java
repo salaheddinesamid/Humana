@@ -46,4 +46,23 @@ public class GlobalExceptionHandler {
                         HttpStatus.BAD_REQUEST
                 ).body(response);
     }
+
+    @ExceptionHandler(UnmatchedPasswordsException.class)
+    public ResponseEntity<ErrorResponse> handleUnmatchedPasswords(
+            UnmatchedPasswordsException ex,
+            HttpServletRequest request
+    ){
+        ErrorResponse response = new ErrorResponse(
+                LocalDateTime.now(),
+                HttpStatus.BAD_REQUEST.value(),
+                "BAD REQUEST",
+                ex.getMessage(),
+                request.getRequestURI()
+        );
+
+        return ResponseEntity
+                .status(
+                        HttpStatus.BAD_REQUEST
+                ).body(response);
+    }
 }
