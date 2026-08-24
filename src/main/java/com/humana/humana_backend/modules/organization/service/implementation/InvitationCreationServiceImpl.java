@@ -8,6 +8,8 @@ import com.humana.humana_backend.modules.organization.utils.InvitationUtils;
 import com.humana.humana_backend.modules.user_management.model.User;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+
 @Service
 public class InvitationCreationServiceImpl implements InvitationCreationService {
 
@@ -28,6 +30,8 @@ public class InvitationCreationServiceImpl implements InvitationCreationService 
         invitation.setUser(user);
         invitation.setToken(invitationUtils.generateToken());
         invitation.setStatus(InvitationStatus.PENDING);
+        invitation.setExpiresAt(LocalDateTime.now().plusDays(2));
+        invitation.setCreatedAt(LocalDateTime.now());
 
         return invitationRepository.save(invitation);
     }
