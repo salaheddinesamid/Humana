@@ -26,6 +26,9 @@ public class User implements UserDetails {
     @Column(name = "password_hashed")
     private String password;
 
+    @Column(name = "is_locked", columnDefinition = "boolean default = TRUE")
+    private boolean isLocked = true;
+
     @Column(name = "roles")
     @OneToMany
     private List<Role> roles;
@@ -60,4 +63,5 @@ public class User implements UserDetails {
     public boolean isEnabled() {
         return UserDetails.super.isEnabled();
     }
+
 }

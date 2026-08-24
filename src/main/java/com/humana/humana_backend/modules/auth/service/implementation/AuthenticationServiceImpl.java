@@ -40,7 +40,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         if(!passwordEncoder.matches(loginDto.getPassword(), user.getPassword())){
             throw new IncorrectPasswordException("Incorrect password or username");
         }
-        if(user.isAccountNonLocked()){
+        if(user.isLocked()){
             throw new UserAccountLockedException(
                     String.format("User account with username: %s is locked, please activate your account and try again", loginDto.getUsername())
             );

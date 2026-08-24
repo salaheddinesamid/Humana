@@ -36,6 +36,7 @@ public class UserActivationServiceImpl implements UserActivationService {
             throw new UnmatchedPasswordsException();
         }
         user.setPassword(dto.getRawPassword());
+        user.setLocked(false);
 
         // Save the user
         userRepository.save(user);
