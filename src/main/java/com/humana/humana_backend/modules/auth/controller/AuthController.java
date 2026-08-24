@@ -3,7 +3,6 @@ package com.humana.humana_backend.modules.auth.controller;
 import com.humana.humana_backend.modules.auth.dto.AccountActivationDto;
 import com.humana.humana_backend.modules.auth.dto.LoginDto;
 import com.humana.humana_backend.modules.auth.service.implementation.AuthenticationServiceImpl;
-import com.humana.humana_backend.modules.user_management.service.implementation.AdminActivationServiceImpl;
 import com.humana.humana_backend.modules.user_management.service.implementation.UserActivationServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
