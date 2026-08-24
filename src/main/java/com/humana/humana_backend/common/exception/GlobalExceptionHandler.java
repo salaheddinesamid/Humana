@@ -65,4 +65,42 @@ public class GlobalExceptionHandler {
                         HttpStatus.BAD_REQUEST
                 ).body(response);
     }
+
+    @ExceptionHandler(IncorrectPasswordException.class)
+    public ResponseEntity<ErrorResponse> handleIncorrectPassword(
+            IncorrectPasswordException e,
+            HttpServletRequest request
+    ){
+        ErrorResponse response = new ErrorResponse(
+                LocalDateTime.now(),
+                HttpStatus.UNAUTHORIZED.value(),
+                "BAD REQUEST",
+                e.getMessage(),
+                request.getRequestURI()
+        );
+
+        return ResponseEntity
+                .status(
+                        HttpStatus.UNAUTHORIZED
+                ).body(response);
+    }
+
+    @ExceptionHandler(UserAccountLockedException.class)
+    public ResponseEntity<ErrorResponse> handleUserAccountLocked(
+            UserAccountLockedException e,
+            HttpServletRequest request
+    ){
+        ErrorResponse response = new ErrorResponse(
+                LocalDateTime.now(),
+                HttpStatus.INTERNAL_SERVER_ERROR.value(),
+                "INTERNAL SERVER ERROR",
+                e.getMessage(),
+                request.getRequestURI()
+        );
+
+        return ResponseEntity
+                .status(
+                        HttpStatus.INTERNAL_SERVER_ERROR
+                ).body(response);
+    }
 }
